@@ -5,8 +5,8 @@ import numpy as np
 ASIENTOSN = 78900
 ASIENTOSVIP = 240000
 arreglo_string = np.array([['1','2','3','4','5','6'],['7','8','9','10','11','12'],['13','14','15','16','17','18'],['19','20','21','22','23','24'],['25','26','27','28','29','30'],['31','32','33','34','35','36'],['37','38','39','40','41','42']])
-NORMALES = [['1','2','3','4','5','6'],['7','8','9','10','11','12'],['13','14','15','16','17','18'],['19','20','21','22','23','24'],['25','26','27','28','29','30']]
-VIP = [['31','32','33','34','35','36'],['37','38','39','40','41','42']]
+normales = [['1','2','3','4','5','6'],['7','8','9','10','11','12'],['13','14','15','16','17','18'],['19','20','21','22','23','24'],['25','26','27','28','29','30']]
+vip = [['31','32','33','34','35','36'],['37','38','39','40','41','42']]
 lista_datos = []
 
 def mostrar_asientos():
@@ -22,17 +22,17 @@ def comprar_asiento():
         for j in range(6):
             if numasiento == arreglo_string[i][j]:
                 arreglo_string[i][j] = 'X'
-                if numasiento in NORMALES:
-                    categoria = ASIENTOSN
-                elif numasiento in VIP:
-                    categoria = ASIENTOSVIP
+                if numasiento not in normales:
+                    categoria = 'VIP'
+                elif numasiento not in vip:
+                    categoria = 'NORMAL'
     nombrePasajero = input('INGRESE EL NOMBRE DEL PASAJERO\n') 
     rutPasajero = input('INGRESE EL RUT DEL PASAJERO\n')
-    while rutPasajero > 9 or rutPasajero < 8:
+    while len(rutPasajero) > 9 or len(rutPasajero) < 8:
         print('el rut ingresado no cumple el largo minimo o maximo.')
         rutPasajero = input('INGRESE EL RUT DEL PASAJERO\n')
     telefonoPasajero = input('INGRESE EL TELEFONO DEL PASAJERO\n')
-    while telefonoPasajero > 9 or telefonoPasajero < 9:
+    while len(telefonoPasajero) > 9 or len(telefonoPasajero) < 9:
         print('El telefono no es valido porfavor intente denuevo (CONSIDERE PONER SOLO LOS 9 NUMEROS)')
         telefonoPasajero = input('INGRESE EL TELEFONO DEL PASAJERO\n')
     bancoPasajero = input('INGRESE EL BANCO DEL PASAJERO\n')
